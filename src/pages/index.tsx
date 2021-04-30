@@ -1,10 +1,9 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading, Box } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import Banner from "../components/Banner";
 import Caracteristicas from "../components/Caracteristicas";
 import Header from "../components/Header";
-import Separador from "../components/Separador";
 import Slider from "../components/Slider";
 
 interface HomeProps {
@@ -32,7 +31,9 @@ export default function Home({ continents }: HomeProps) {
     <Header />
     <Banner />
     <Caracteristicas />
-    <Separador />
+
+    <Box w={["60px","90px"]} mx="auto" h="2px" bg="gray.700" my={["9","20"]} />
+    
 
     <Heading
       textAlign="center"
@@ -42,7 +43,8 @@ export default function Home({ continents }: HomeProps) {
       "3xl",
       "4xl"]}
     >
-    Vamos nessa?<br/>Então escolha seu continente
+    Vamos nessa?<br/>
+    Então escolha seu continente
     </Heading>
     
     <Slider continents={continents} />
@@ -53,29 +55,35 @@ export default function Home({ continents }: HomeProps) {
 export const getStaticProps: GetStaticProps = async () => {
   const continentsList = [
     {
-      slug: "string",
-      title: "string",
-      summary: "string",
-      image: "string",
+      slug: "Europa",
+      title: "Europa",
+      summary: "O continente mais antigo",
+      image: "/continent-slid.png",
     },
     {
-      slug: "string",
-      title: "string",
-      summary: "string",
-      image: "string",
+      slug: "Europa2",
+      title: "Europa2",
+      summary: "O continente mais antigo",
+      image: "/continent-slid.png",
     },
     {
-      slug: "string",
-      title: "string",
-      summary: "string",
-      image: "string",
+      slug: "Europa3",
+      title: "Europa3",
+      summary: "O continente mais antigo",
+      image: "/continent-slid.png",
     },
     {
-      slug: "string",
-      title: "string",
-      summary: "string",
-      image: "string",
-    }            
+      slug: "Europa4",
+      title: "Europa4",
+      summary: "O continente mais antigo",
+      image: "/continent-slid.png",
+    },
+    {
+      slug: "Europa5",
+      title: "Europa5",
+      summary: "O continente mais antigo",
+      image: "/continent-slid.png",
+    }                
   ]
 
   const continents = continentsList.map(continent => {

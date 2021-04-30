@@ -62,44 +62,56 @@ export default function Continent({continent}: ContinentProps) {
   )
 }
 
-/* export const getStaticPaths: GetStaticPaths = async () => {
-  const prismic = getPrismicClient();
-  const continents = await prismic.query([
-    Prismic.Predicates.at('document.type', 'continent'),
-  ]);
-
-  const paths = continents.results.map(continent => {
-    return {
-      params: {
-        slug: continent.uid,
-      },
-    };
-  });
-
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths,
-    fallback: true,
+    paths: [],
+    fallback: "blocking",
   };
-}; */
+};
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { slug } = context.params;
-
+  const description = "A Europa é, por convenção, um dos seis continentes do mundo. Compreendendo a península ocidental da Eurásia, a Europa geralmente divide-se da Ásia a leste pela divisória de águas dos montes Urais, o rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste"
   const continent = {
-    slug:"response.uid",
-    title: "response.data.title",
-    description: "response.data.description",
-    banner_image: "response.data.banner_image.url",
-    countries: "response.data.countries",
-    languages: "response.data.languages",
-    cities: "response.data.cities",
-    cities_list: "response.data.cities_list",
-    cities100: {
-        city: "city.city",
-        country: "city.country",
-        thumbnail: "city.thumbnail.url",
-        flag: "city.flag.url",
-      }
+    slug:"Europa",
+    title: "Europa",
+    description: description,
+    banner_image: "/banner-continent.png",
+    countries: "50",
+    languages: "60",
+    cities: "27",
+    cities_list: "cities_list",
+    cities100: [
+      {
+        city: "Londres",
+        country: "Reino Unido",
+        thumbnail: "/londres.png",
+        flag: "/reino.svg",
+      },
+      {
+        city: "Paris",
+        country: "França",
+        thumbnail: "/paris.png",
+        flag: "/franca.svg",
+      },
+      {
+        city: "Roma",
+        country: "Italia",
+        thumbnail: "/roma.png",
+        flag: "/italia.svg",
+      },
+      {
+        city: "Praga",
+        country: "Republica Tcheca",
+        thumbnail: "/praga.png",
+        flag: "/reptecha.svg",
+      },
+      {
+        city: "Amsterdã",
+        country: "Holanda",
+        thumbnail: "/amsterda.png",
+        flag: "/holanda.svg",
+      }                        
+    ]
   };
 
   return {
